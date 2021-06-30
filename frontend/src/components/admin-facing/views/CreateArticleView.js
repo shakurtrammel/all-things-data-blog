@@ -1,0 +1,158 @@
+import React        from 'react'
+import { Editor }   from '@tinymce/tinymce-react'
+import AdminHeader from '../app_shell/AdminHeader.js'
+
+
+
+class CreateArticleView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            p1_heading: '',
+            p2_heading: '',
+            p3_heading: '',
+            p1_value: props.initialValue ?? '',
+            p2_value: props.initialValue ?? '',
+            p3_value: props.initialValue ?? '',
+        };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleEditorChange = this.handleEditorChange.bind(this);
+    }
+  
+    componentDidUpdate(prevProps) {
+      if (this.props.initialValue !== prevProps.initialValue) {
+        this.setState({ value: this.props.initialValue ?? '' })
+      }
+      console.log(this.state);
+    }
+
+    handleInputChange (e) {
+        switch (e.target.name) {
+            case 'p1_heading':
+                this.setState({ p1_heading: e.target.value })
+                break
+            case 'p2_heading':
+                this.setState({ p2_heading: e.target.value })
+                break
+            case 'p3_heading':
+                this.setState({ p3_heading: e.target.value })
+                break
+            default:
+                console.log('No text saved in state.')
+        }
+    }
+    
+    handleEditorChange(editor, value) {
+        //console.log(value.id)
+        switch (value.id) {
+            case 'p1':
+                this.setState({ p1_value: editor })
+                break
+            case 'p2':
+                this.setState({ p2_value: editor })
+                break
+            case 'p3':
+                this.setState({ p3_value: editor })
+                break
+            default:
+                console.log('No text saved in state.')
+        }
+    }
+  
+    render() {
+      return (
+        <>
+        <AdminHeader />
+        <form method='POST' style={{width: '700px', margin: '0 auto'}}>
+            <div>
+                <p>Point 1</p>
+                <label htmlFor='p1_heading'>Heading: </label>
+                <input type='text' name='p1_heading' onChange={this.handleInputChange}></input>
+            </div>
+            <Editor
+                id='p1'
+                apiKey='bbn2g27vv6w704mygy8k29ttnfoh7f907dblbwalmf6rqgn4'
+                initialValue={this.props.initialValue}
+                value={this.state.p1_value}
+                onEditorChange={this.handleEditorChange}
+                init= {{
+                        menubar: false,
+                        plugins: [
+                            'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar: 'undo redo | formatselect | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat | help',
+                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                        force_br_newlines: true,
+                        force_p_newlines: false,
+                        forced_root_block: '',
+                    }}
+            />
+            <div>
+                <p>Point 2</p>
+                <label htmlFor='p2_heading'>Heading: </label>
+                <input type='text' name='p2_heading' onChange={this.handleInputChange}></input>
+            </div>
+            <Editor
+                id='p2'
+                apiKey='bbn2g27vv6w704mygy8k29ttnfoh7f907dblbwalmf6rqgn4'
+                initialValue={this.props.initialValue}
+                value={this.state.p2_value}
+                onEditorChange={this.handleEditorChange}
+                init= {{
+                        menubar: false,
+                        plugins: [
+                            'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar: 'undo redo | formatselect | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat | help',
+                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                        force_br_newlines: true,
+                        force_p_newlines: false,
+                        forced_root_block: '',
+                    }}
+            />
+            <div>
+                <p>Point 3</p>
+                <label htmlFor='p3_heading'>Heading: </label>
+                <input type='text' name='p3_heading' onChange={this.handleInputChange}></input>
+            </div>
+            <Editor
+                id='p3'
+                apiKey='bbn2g27vv6w704mygy8k29ttnfoh7f907dblbwalmf6rqgn4'
+                initialValue={this.props.initialValue}
+                value={this.state.p3_value}
+                onEditorChange={this.handleEditorChange}
+                init= {{
+                        menubar: false,
+                        plugins: [
+                            'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar: 'undo redo | formatselect | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat | help',
+                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                        force_br_newlines: true,
+                        force_p_newlines: false,
+                        forced_root_block: '',
+                    }}
+            />
+        </form>
+        </>
+      );
+    }
+  }
+  
+
+export default CreateArticleView;

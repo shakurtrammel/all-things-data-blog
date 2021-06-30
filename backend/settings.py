@@ -79,8 +79,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cdblog_database',
+        'USER': 'dbadmin',
+        'PASSWORD': 'dbpassword',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -130,3 +136,8 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+
+
+# Explicitly set type of auto-created primary keys.
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

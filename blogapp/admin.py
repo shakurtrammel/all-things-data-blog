@@ -2,21 +2,35 @@ from django.contrib import admin
 from .models import *
 
 
-class PostAdmin(admin.ModelAdmin):
+class ArticleAdmin(admin.ModelAdmin):
     list_display = (
         'title',
-        'desc',
-        'mp1',
-        'mp2',
-        'mp3',
+        'tldr',
+        'intro',
+        'p1_heading',
         'p1',
+        'p2_heading',
         'p2',
+        'p3_heading',
         'p3',
-        'i1',
-        'i2',
-        'i3',
+        'outro',
     )
 
-# Register your models here.
+class TestArticleAdmin(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'tldr',
+        'intro',
+        'p1_heading',
+        'p1',
+        'p2_heading',
+        'p2',
+        'p3_heading',
+        'p3',
+        'outro',
+    )
 
-admin.site.register(Post, PostAdmin)
+
+# Register your models here.
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(TestArticle, TestArticleAdmin)
