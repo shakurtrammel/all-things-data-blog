@@ -6,28 +6,56 @@ import { SidebarData } from './SidebarData.js'
 
 
 // Styles
-const StyledDiv = styled.div`
+const NavContainer = styled.div`
+    width: 80px;
     height: 100vh;
-    width: 250px;
     background-color: #2f4050;
 `;
 
 const StyledUL = styled.ul`
-    height: 100%;
+    height: auto;
     width: 100%;
     padding: 0;
+`;
+
+const SubMenu = styled.ul`
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    list-style: none;
+`;
+
+const StyledLI = styled.li`
+    &:hover ${SubMenu} {
+        left: 100px;
+    }
 `;
 
 const StyledNavLink = styled(NavLink)`
     height: 50px;
     width: 100%;
-    border: 1px solid black;
-    list-style: none;
-    margin: 0;
+    list-style-type: none;
+    margin: 0px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     color: white;
+    &:hover {
+        background-color: #293846; 
+    }
 `;
+
+const IconContainer = styled.div`
+    display: grid;
+    place-items: center;
+`;
+
+const TitleContainer = styled.div`
+    flex: 70%;
+`;
+
+
 
 
 
@@ -36,20 +64,23 @@ class SidebarNav extends React.Component {
 
     render() {
         return (
-            <StyledDiv>
+            <NavContainer>
                 <StyledUL>
                     {SidebarData.map( (item, key) => {
                         return (
-                            <li key={key}>
+                            <StyledLI key={key}>
                                 <StyledNavLink to={item.path}>
-                                    <div>{item.icon}</div>
-                                    <div>{item.title}</div>
+                                    <IconContainer>{item.icon}</IconContainer>
+                                    <SubMenu>
+                                        <li><a href='/admin'>Category 1</a></li>
+                                        <li><a href='/admin'>Category 2</a></li>
+                                </SubMenu>
                                 </StyledNavLink>
-                            </li>
+                            </StyledLI>
                         );
                     })}
                 </StyledUL>
-            </StyledDiv>
+            </NavContainer>
         )
     }
 }
