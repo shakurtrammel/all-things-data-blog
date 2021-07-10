@@ -6,21 +6,13 @@ import { NavLink } from 'react-router-dom';
 const MainHeader = styled.header`
     position: sticky;
     top: 0;
-    height: .5em;
-    padding: 1em 4em;
-    margin-bottom: 4em;
-`;
+    z-index: 3;
+    height: 75px;
+    grid-column-start: line2;
+    grid-column-end: line3;
+    grid-row-start: line1;
+    grid-row-end: line2;
 
-const LogoWrapper = styled.div`
-    height: 30px;
-    position: relative;
-`;
-
-const StyledH1 = styled.h1`
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    font-size: 1.2em;
 `;
 
 const StyledLink = styled(NavLink)`
@@ -33,7 +25,6 @@ const StyledLink = styled(NavLink)`
 `;
 
 const MainNav = styled.nav`
-    height: 30px;
     position: absolute;
     bottom: 0;
     right: 4em;
@@ -74,24 +65,14 @@ const AdminSiteNav = () => {
 }
 
 
-const AdminLogo = () => {
-    return (
-        <LogoWrapper>
-            <StyledH1>
-                <StyledLink to="/admin">Simple Blog (Admin)</StyledLink>
-            </StyledH1>
-        </LogoWrapper>
-    );
-}
-
 
 const AdminHeader = () => {
     return (
         <MainHeader>
-            <AdminLogo />
             <AdminSiteNav />
         </MainHeader>
     );
 }
+
 
 export default AdminHeader;

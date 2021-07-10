@@ -75,10 +75,10 @@ const Menu = [
                     </DropdownLabel>
                     <DropdownMenu id='dropdown-menu'>
                         <Submenu id='submenu'>
-                            <StyledLink to='/admin'>Create Article</StyledLink>
+                            <StyledLink to='/admin/create-article'>Create Article</StyledLink>
                             <StyledLink to='/admin'>Read Article</StyledLink>
                             <StyledLink to='/admin'>Update Article</StyledLink>
-                            <StyledLink to='/admin'>Delete Article</StyledLink>
+                            <StyledLink to='/admin/delete-article'>Delete Article</StyledLink>
                         </Submenu>
                     </DropdownMenu>
                 </DropdownContainer>,
