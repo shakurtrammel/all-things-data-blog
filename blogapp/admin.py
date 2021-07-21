@@ -28,6 +28,8 @@ class TestArticleAdmin(admin.ModelAdmin):
         'p3_heading',
         'p3',
         'outro',
+        'likes',
+        'updated_at',
     )
 
 

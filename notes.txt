@@ -155,3 +155,6 @@ export default CreateArticleView;
 
 
 ///
+                <OpenBTN id='open-modal-btn' type='button' onClick={this.openModal}>
+                    Open Modal
+                </OpenBTN>

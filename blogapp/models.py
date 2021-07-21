@@ -15,13 +15,13 @@ class TestArticle(models.Model):
     outro = models.TextField(null=True, blank=True)
     likes = models.IntegerField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
     #tags = models.ForeignKey(Tag, related_name="articles", on_delete=models.CASCADE)
     #author = models.ForeignKey(Author, related_name="articles", on_delete=models.CASCADE)
     #comments = models.CharField(max_length=120, null=True, blank=True)
+    def _repr_(self):
+        return f"<TestArticle object: {self.title} ({self.id})>"
 
-    def _str_(self):
-        return self.title
 
 
 class TestTag(models.Model):
@@ -57,9 +57,8 @@ class Article(models.Model):
     #tags = models.ForeignKey(Tag, related_name="articles", on_delete=models.CASCADE)
     #author = models.ForeignKey(Author, related_name="articles", on_delete=models.CASCADE)
     #comments = models.CharField(max_length=120, null=True, blank=True)
-
-    def _str_(self):
-        return self.title
+    def _repr_(self):
+        return f"<Article object: {self.title} ({self.id})>"
 
 
 class Tag(models.Model):

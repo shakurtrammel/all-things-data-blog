@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 
+
 const StyledHeader = styled.header`
     margin-bottom: 3em;
     text-align: center;
@@ -12,12 +13,13 @@ const StyledH1 = styled.h1`
     font-size: 2.2em;
 `;
 
+/*
 const StyledAuthor = styled.span`
     display: block;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 0.8em;
-
 `;
+*/
 
 const StyledDate = styled.span`
     display: block;
@@ -38,12 +40,9 @@ const TLDR = styled.p`
 const ArticleHeader = (props) => {
     return (
         <StyledHeader>
-            <StyledH1>Test Article</StyledH1>
-            <StyledAuthor>By Shakur Trammel</StyledAuthor>
-            <StyledDate>May 24th 2021</StyledDate>
-            <TLDR>
-                In hac habitasse platea dictumst. Maecenas nec ex ante. Ut pulvinar tincidunt turpis, egestas pellentesque purus bibendum at. Integer ullamcorper blandit nulla, in iaculis leo. Mauris venenatis condimentum luctus. 
-            </TLDR>
+            <StyledH1>{props.article.title}</StyledH1>
+            <StyledDate>{props.article.updated_at}</StyledDate>
+            <TLDR>{props.article.tldr}</TLDR>
         </StyledHeader>
     );
 }

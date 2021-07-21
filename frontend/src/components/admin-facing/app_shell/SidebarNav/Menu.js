@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import DeleteArticleLink from '../../views/DeleteArticleLink'
 
 
 
@@ -65,7 +66,7 @@ const StyledLink = styled(NavLink)`
 
 
 
-// Main component.
+// Export default.
 const Menu = [
     {
         label: 'Articles',
@@ -76,9 +77,9 @@ const Menu = [
                     <DropdownMenu id='dropdown-menu'>
                         <Submenu id='submenu'>
                             <StyledLink to='/admin/create-article'>Create Article</StyledLink>
-                            <StyledLink to='/admin'>Read Article</StyledLink>
+                            <StyledLink to='/admin/read-article'>Read Article</StyledLink>
                             <StyledLink to='/admin'>Update Article</StyledLink>
-                            <StyledLink to='/admin/delete-article'>Delete Article</StyledLink>
+                            <DeleteArticleLink />
                         </Submenu>
                     </DropdownMenu>
                 </DropdownContainer>,

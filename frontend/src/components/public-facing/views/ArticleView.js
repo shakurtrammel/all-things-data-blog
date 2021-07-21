@@ -1,5 +1,5 @@
 import SiteHeader from "../views/ArticleView.js"
-import Article from "../../Article.js"
+import Article from "../../shared/Article"
 
 
 

@@ -1,14 +1,11 @@
 import React            from 'react'
 import styled           from 'styled-components';
-import PageWrapper      from '../app_shell/PageWrapper.js';
-import AdminHeader      from '../app_shell/AdminHeader.js'
-import MainContainer    from '../app_shell/MainContainer.js';
-import SidebarNav       from '../app_shell/SidebarNav/index.js';
+import { NavLink }      from 'react-router-dom';
 
 
 
 const ModalContainer = styled.div`
-    display: block;
+    display: none;
 `;
 
 const ModalBackdrop = styled.div`
@@ -31,12 +28,6 @@ const ModalContents = styled.div`
     overflow: auto;
 `;
 
-const OpenBTN = styled.button`
-    padding: 0.5em 0.7em;
-    border: 1px solid darkgrey;
-    font-size: 1em;
-`;
-
 const CloseBTN = styled.button`
     padding: 0.5em 0.7em;
     border: 1px solid darkgrey;
@@ -44,8 +35,21 @@ const CloseBTN = styled.button`
     font-size: 1em;
 `;
 
+const StyledLink = styled(NavLink)`
+    display: block;
+    padding: .5em 1.5em;
+    background-color: #eee;
+    color: #369;
+    text-decoration: none;
+    border-top: 1px solid #999;
+    &:hover {
+        background-color: #fff;
+    }
+`;
 
-class DeleteArticleModal extends React.Component {
+
+
+class DeleteArticleLink extends React.Component {
     constructor(props) {
         super()
         this.state = {
@@ -74,21 +78,24 @@ class DeleteArticleModal extends React.Component {
 
     render() {
         return (
-            <ModalContainer ref={this.modalRef}>
-                <ModalBackdrop />
-                <ModalContents>
-                    <h3>Delete Article</h3>
-                    <p>Select article to delete.</p>
-                    <form>
-                        <label>Enter article number:</label>
-                        <input type='text'></input>
-                        <input type='submit'></input>
-                    </form>
-                    <CloseBTN id='close-modal' onClick={this.closeModal}>Close</CloseBTN>
-                </ModalContents>
-            </ModalContainer>
+            <>
+                <StyledLink to='#' onClick={this.openModal}>Delete Article</StyledLink>
+                <ModalContainer ref={this.modalRef}>
+                    <ModalBackdrop />
+                    <ModalContents>
+                        <h3>Delete Article</h3>
+                        <p>Select article to delete.</p>
+                        <form>
+                            <label>Enter article number:</label>
+                            <input type='text'></input>
+                            <input type='submit'></input>
+                        </form>
+                        <CloseBTN id='close-modal' onClick={this.closeModal}>Close</CloseBTN>
+                    </ModalContents>
+                </ModalContainer>
+            </>
         )
     }
 }
 
-export default DeleteArticleModal
+export default DeleteArticleLink

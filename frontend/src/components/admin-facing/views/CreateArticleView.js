@@ -49,6 +49,12 @@ const PointWrapper = styled.div`
     }
 `;
 
+const InputSubmit = styled.input`
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+`;
+
 
 // Main component.
 class CreateArticleView extends React.Component {
@@ -70,6 +76,7 @@ class CreateArticleView extends React.Component {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleEditorChange = this.handleEditorChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
   
     componentDidUpdate(prevProps) {
@@ -122,6 +129,11 @@ class CreateArticleView extends React.Component {
             default:
                 console.log('No text saved in state.')
         }
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault()
+        console.log('Submit input clicked!')
     }
   
     render() {
@@ -271,6 +283,12 @@ class CreateArticleView extends React.Component {
                                 }}
                         />
                     </PointWrapper>
+                    <InputSubmit
+                        type='submit' 
+                        name='input-submit' 
+                        value='Create Article'
+                        onClick={this.handleFormSubmit}
+                    />
                 </StyledForm>
             </MainContainer>
         </PageWrapper>

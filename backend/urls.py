@@ -19,7 +19,12 @@ from rest_framework import routers
 from blogapp import views
 
 
+router = routers.DefaultRouter()
+router.register(r'test', views.TestArticleView, 'testarticle')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('', include('blogapp.urls')),
 ]
