@@ -4,6 +4,7 @@ from .models import *
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'title',
         'tldr',
         'intro',
@@ -18,6 +19,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 class TestArticleAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'title',
         'tldr',
         'intro',

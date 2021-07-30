@@ -78,7 +78,7 @@ const Menu = [
                         <Submenu id='submenu'>
                             <StyledLink to='/admin/create-article'>Create Article</StyledLink>
                             <StyledLink to='/admin/read-article'>Read Article</StyledLink>
-                            <StyledLink to='/admin'>Update Article</StyledLink>
+                            <StyledLink to='/admin/update-article'>Update Article</StyledLink>
                             <DeleteArticleLink />
                         </Submenu>
                     </DropdownMenu>

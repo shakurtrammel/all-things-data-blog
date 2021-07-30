@@ -1,11 +1,13 @@
-import React            from 'react'
-import styled           from 'styled-components'
-import axios            from 'axios'
-import PageWrapper      from '../app_shell/PageWrapper.js'
-import AdminHeader      from '../app_shell/AdminHeader.js'
-import SidebarNav       from '../app_shell/SidebarNav/index.js'
-import Article          from '../../shared/Article'
-import MainContainer    from '../app_shell/MainContainer.js'
+import React                    from 'react'
+import { connect }              from 'react-redux'
+import { retrieveArticles }     from '../../../redux/actions/index.js'
+import styled                   from 'styled-components'
+import axios                    from 'axios'
+import PageWrapper              from '../app_shell/PageWrapper.js'
+import AdminHeader              from '../app_shell/AdminHeader.js'
+import SidebarNav               from '../app_shell/SidebarNav/index.js'
+import Article                  from '../../shared/Article'
+import MainContainer            from '../app_shell/MainContainer.js'
 
 
 
@@ -22,10 +24,10 @@ class CreateArticleView extends React.Component {
         super(props)
         this.state = {
             isLoading: true,
-            article: [null],
+            article: [],
             error: null
         }
-        this.renderIfLoading = this.renderIfLoading.bind(this)
+        this.renderWhilLoading = this.renderWhileLoading.bind(this)
     }
 
 
@@ -42,7 +44,7 @@ class CreateArticleView extends React.Component {
     }
 
 
-    renderIfLoading() {
+    renderWhileLoading() {
         const { error, isLoading, article } = this.state
         if (error)
             return <p>{error.message}</p>
@@ -57,11 +59,28 @@ class CreateArticleView extends React.Component {
             <PageWrapper>
                 <SidebarNav />
                 <AdminHeader />
-                <MainContainer>{ this.renderIfLoading() }</MainContainer>
+                <MainContainer>{ this.renderWhileLoading() }</MainContainer>
             </PageWrapper>
         );
     }
-  }
+}
 
 
-export default CreateArticleView;
+const mapStateToProps = state => ({
+    articles: state.data.articles
+})
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        submit: (data) => {
+            dispatch(retrieveArticles(data))
+        }
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CreateArticleView);

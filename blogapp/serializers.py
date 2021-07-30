@@ -6,6 +6,7 @@ class TestArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestArticle
         fields = (
+            'id',
             'title',
             'tldr',
             'intro',
