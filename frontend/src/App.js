@@ -18,7 +18,6 @@ import ArticleView                          from "./components/public-facing/vie
 class App extends React.Component {
 
   componentDidMount() {
-    // 
     this.props.retrieveArticles()
   }
 
@@ -28,7 +27,9 @@ class App extends React.Component {
     return (
       <Switch>
         <Route path="/admin/update-article"><UpdateArticleView /></Route>
-        <Route path="/admin/read-article"><ReadArticleView /></Route>
+        <Route path="/admin/read-article">
+          <ReadArticleView articles={this.props.articles} isLoading={this.props.isLaoding}/>
+        </Route>
         <Route path="/admin/create-article"><CreateArticleView /></Route>
         <Route path="/admin"><AdminHomeView articles={this.props.articles} /></Route>
         <Route path="/article"><ArticleView /></Route>
@@ -45,7 +46,8 @@ class App extends React.Component {
 
 const mapStateToProps = totalState => {
   return {
-    articles: totalState.totalState.articles
+    articles: totalState.totalState.articles,
+    isLoading: totalState.totalState.isLoading
   }
 }
 

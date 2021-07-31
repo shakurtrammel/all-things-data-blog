@@ -59,6 +59,7 @@ const RCell = styled.td`
 class AdminHomeView extends React.Component {
     constructor(props) {
         super(props);
+        // Local state.
         this.state = {
             isLoading: false,
             error: null,       
