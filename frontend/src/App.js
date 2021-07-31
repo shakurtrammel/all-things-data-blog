@@ -5,7 +5,7 @@ import './App.css'
 import { retrieveArticles }                 from './redux/actions'
 import AdminHomeView                        from "./components/admin-facing/views/AdminHomeView.js"
 import CreateArticleView                    from "./components/admin-facing/views/CreateArticleView.js"
-import ReadArticleView                      from "./components/admin-facing/views/ReadArticleView.js"
+import { ReadArticleView }                  from "./components/admin-facing/views/ReadArticleView.js"
 import UpdateArticleView                    from "./components/admin-facing/views/UpdateArticleView"
 import HomeView                             from "./components/public-facing/views/HomeView.js"
 import AboutView                            from "./components/public-facing/views/AboutView.js"
